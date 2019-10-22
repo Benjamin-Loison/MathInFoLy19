@@ -5,8 +5,6 @@ Here is the result of our project at the end of the week. We worked on the Picro
 
 Credits:
 
-Benjamin Loison
-Alexandre Kirchmeyer
-Léo Mangel
-Florent Plt
-Dorian Biichlé
+Benjamin Loison | Alexandre Kirchmeyer | Léo Mangel | Florent Plt | Dorian Biichlé
+
+![alt text](http://url/to/img.png)
