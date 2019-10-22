@@ -3,7 +3,8 @@ Summer school about mathematics, computer science: "Cryptographie, blockchain et
 
 Here is the result of our project at the end of the week. We worked on the Picross game.
 
-PS: Some data may be missing like tests, PDF...
+PS0: Some data may be missing like tests, PDF...
+PS1: Required glucose for running (may be glucose static (parallel version) depending on the code version)
 
 Credits:
 
