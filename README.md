@@ -12,3 +12,5 @@ Credits:
 Benjamin Loison | Alexandre Kirchmeyer | Léo Mangel | Florent Plt | Dorian Biichlé
 
 ![alt text](https://github.com/Benjamin-Loison/MathInFoLy19/raw/master/presentation.jpg)
+
+Picross 24x25
