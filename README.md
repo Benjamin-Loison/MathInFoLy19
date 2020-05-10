@@ -5,7 +5,7 @@ Here is the result of our project at the end of the week. We worked on the Picro
 
 PS0: Some data may be missing like tests, PDF... (quite a mess after such a week)
 
-PS1: Required glucose SAT-solver for running (may be glucose static (parallel version) depending on the code version)
+PS1: This project requires glucose SAT-solver for running (may be glucose static (parallel version) depending on the code version)
 
 Credits:
 
