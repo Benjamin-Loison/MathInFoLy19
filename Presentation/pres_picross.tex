@@ -1,0 +1,207 @@
+\documentclass[12pt]{beamer}
+\usetheme{Warsaw}
+\usepackage[utf8]{inputenc} % à utiliser pour overleaf
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+%\usepackage{amsmath}
+%\usepackage{amsfonts}
+%\usepackage{amssymb}
+%\usepackage{graphicx} %pour les images
+\author[The Picross team]{Alexandre Kirchmeyer - Dorian Biichlé - Benjamin Loison - Léo Mangel - Florent Pollet}
+\title[Picross SAT Solver]{SAT Solver :\\Picross}
+\institute[Mathinfoly]{Mathinfoly}
+%\date{\now} 
+%\setbeamercovered{transparent} 
+%\setbeamertemplate{navigation symbols}{} 
+%\logo{} 
+%\institute{} 
+%\date{} 
+%\subject{} 
+
+\usepackage{style}
+\usepackage{listings} % ou minted, à voir
+\usefonttheme[onlymath]{serif}
+\usepackage{setspace}
+
+\usepackage{subfigure}
+
+\makeatletter
+\setbeamertemplate{theorem begin}
+{%
+\begin{\inserttheoremblockenv}
+{%
+\ifx\inserttheoremaddition\@empty\else\ \inserttheoremaddition\fi%
+}%
+}
+\setbeamertemplate{theorem end}{\end{\inserttheoremblockenv}}
+\makeatother
+
+
+\setbeamertemplate{caption}{\raggedright\insertcaption\par}
+
+\begin{document}
+
+
+% Rien d'autre à faire qu'afficher le titre
+\begin{frame}
+\titlepage 
+\locfigb{img/license.png}{}{i0}{0.3}
+\end{frame}
+
+
+
+
+\section[]{Introduction} %justification des choix, fil directeur
+
+\begin{frame}
+\frametitle{Introduction}
+\framesubtitle{Laissez-vous guider !}
+
+
+\begin{columns}
+\column{0.5\textwidth}
+\locfigb{img/toad.PNG}{Un joli puzzle}{i8}{0.9}
+
+\column{0.5\textwidth}
+\begin{itemize}
+    \item C'est amusant !
+    \item C'est parti !
+\end{itemize}
+\end{columns}
+
+\end{frame}
+
+
+% La table des matières utilise ce que vous donnez aux commandes \section et 
+% \subsection tout au long de la présentation.
+\begin{frame}
+\frametitle{Plan} 
+\tableofcontents 
+\end{frame}
+
+
+\section[]{Le jeu}
+\begin{frame}
+\frametitle{Le jeu}
+\begin{itemize}
+    \item Un puzzle = un hanjie = un nonogram
+    \item 2 couleurs
+    \item Contraintes sur les lignes et les colonnes : blocs de la longueur indiquée, dans l'ordre, séparé par au moins une case de l'autre couleur
+    \item Une ou plusieurs solutions (selon les contraintes)
+\end{itemize}
+
+\locfigb{img/Hanjie.JPG}{Avec un papier et du crayon...}{i0}{0.4}
+
+
+\end{frame}
+
+
+
+\section[]{Modélisation}
+\begin{frame}
+\frametitle{Modélisation - Premier modèle}
+
+\begin{itemize}
+    \item Modèle naïf : une variable par case, génération de toutes les possibilités. 
+    \item Utilisation de sympy pour le passage en CNF.
+    \locfigb{img/config_to_expr.jpg}{Ecriture des conditions sous forme logique.}{i0}{0.7}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Modélisation - Premier modèle}
+    \locfigb{img/modele_naif.JPG}{Bruteforce des familles.}{i0}{0.8}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Modélisation - Second modèle}
+    \locfigb{img/second_modele.jpg}{Utilisation de variables secondaires}{i0}{0.8}
+
+\end{frame}
+\section[]{Complexité}
+\begin{frame}{Complexité}
+    \locfigb{img/complexite.jpg}{}{i0}{0.8}
+\end{frame}
+
+
+\section[]{Performances}
+\begin{frame}
+\frametitle{Performances}
+%screen à mettre
+Utilisation de boardgen
+\begin{table}[]
+\begin{tabular}{lllll}
+i & Size & Generation time & Glucose time & Density \\
+1 & 20     & 1.115s                 & 0.965s           & 0.5     \\
+2 & 20     & 1.156s                 & 2.919s           & 0.475   \\
+3 & 20     & 10.416s                & 2.33             & 0.45    \\
+4 & 20     & 7.239s                 & 2.7s             & 0.425   \\
+5 & 20     & 26.811s                & 10.103s          & 0.4     \\
+6 & 30     & 15.58s                 & 73.094s          & 0.5     \\
+7 & 30     & 10.81s                 & 17.215s          & 0.5     \\
+8 & 33     & 641.249s              & 1861.86s        & 0.5    
+\end{tabular}
+\end{table}
+
+
+\end{frame}
+
+\section[]{Démonstration du programme}
+\begin{frame}
+\frametitle{Démonstration du programme}%0 ligne de code %explication jeu, modélisation, en tête dimacs, performance, imp?? , entrée, sortie
+\begin{itemize}
+    \item Fonctionnement avec pypy & utilisation de boardgen.py
+    \item Cf à la fin pour le voir en direct !
+\end{itemize}
+
+%mettre un fichier d'entrée format
+
+\begin{columns}
+\column{0.5\textwidth}
+\locfigb{img/math1.png}{Quelque chose de formidable}{i0}{0.6}
+\column{0.5\textwidth}
+\locfigb{img/mathinfoly.JPG}{Solution non unique (n et y)}{i0}{0.6}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{Démonstration du programme}%0 ligne de code %explication jeu, modélisation, en tête dimacs, performance, imp?? , entrée, sortie
+
+\begin{itemize}
+    \item Détection des puzzles sans solutions
+\end{itemize}
+
+
+\begin{columns}
+\column{0.5\textwidth}
+\locfigb{img/bug.png}{Un exemple}{i0}{0.8}
+\column{0.5\textwidth}
+\locfigb{img/code.png}{Le code}{i0}{0.4}
+\end{columns}
+
+\end{frame}
+
+
+%\begin{frame}
+%\frametitle{Performances et étude de la complexité}
+%\locfigb{}{Un benchmark}{i0}{0.4}
+%\end{frame}
+
+
+\section[]{Conclusion}
+\begin{frame}
+\begin{itemize}
+    \item Recherche très intéressante
+    \item Des progrès sont encore possibles :
+\locfigb{img/contest.PNG}{Nonograms 25x25}{i9}{0.7}
+    \item Merci pour votre attention !
+\end{itemize}
+\frametitle{Conclusion}
+
+
+\end{frame}
+
+
+\end{document}
