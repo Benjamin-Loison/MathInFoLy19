@@ -1,5 +1,5 @@
 # MathInFoLy19
-Summer school about mathematics, computer science: "Cryptographie, blockchain et vérification de programmes Du 24 au 31 août (2019) - INSA - Lyon - France"
+Summer school about mathematics, computer science: [Cryptographie, blockchain et vérification de programmes Du 24 au 31 août (2019) - INSA - Lyon - France](https://web.archive.org/web/20210618030150/https://mathinfoly.org/)
 
 Here is the result of our project at the end of the week. We worked on the Picross game.
 
